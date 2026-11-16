@@ -1,6 +1,6 @@
 # Conversational Control with Ontologies for Large Language Models: A Lightweight Framework for Constrained Generation
 
-This repository contains the software material for the paper "Conversational Control with Ontologies for Large Language Models: A Lightweight Framework for Constrained Generation" accepted at KG & LLM @ LREC 2026. It gathers the scripts and objects that have been developed and used by the authors as part of this work. Due to the size limitation of the supplementary material, we could provide the adapter layers only for one use-case and we could not provide all the datasets and trained models mentioned in the paper. Consequently, the fine-tuning and the evaluation of large language models as presented in the paper can be performed only after all the auxiliary models have been trained and the necessary data have been retrieve. We apologize for the inconvenience and tried to put as much of the useful material as possible in the repository.
+This repository contains the software material for the paper "Conversational Control with Ontologies for Large Language Models: A Lightweight Framework for Constrained Generation" accepted at KG & LLM @ LREC 2026. It gathers the scripts and objects that have been developed and used by the authors as part of this work. Due to the size limitation of the supplementary material, we could provide the adapter layers only for one use-case and we could not provide all the datasets and trained models mentioned in the paper. Consequently, the fine-tuning and the evaluation of large language models as presented in the paper can be performed only after all the auxiliary models have been trained and the necessary data have been retrieved. We apologize for the inconvenience and tried to put as much of the useful material as possible in the repository.
 
 ## Table of Contents
 
@@ -49,7 +49,7 @@ This subfolder contains the code to fine-tune RoBERTa-based models on load and p
 
 ### `onto-models`
 
-This subfolders contains the ontologies and (normally, when enough space) the auxiliary models to evaluate the descriptor values on the textual content and incorporate this information in the ontology. Each utterance will be therefore seen as an ontology individual. For that, we use the `owlready2` python library that allows to create an ontology and call reasoners to perform inference on it. This part of the code is crucial as it allows to retrieve the inferred concepts that will then be used to annotate fine-tuning data, to evaluate generated content and to guide the implementation of conversational strategies. Regarding the Proficiency-Level Control use-case, there are two ontologies: `rdf/utterances_cefr.rdf` only for the one-shot generation evaluation and `rdf/controllable_conversation.rdf` for the conversation strategy. The first one is processed in `code/finetuning_batch_individuals_cefr.py` and the second one in `code/finetuning_individuals_cefr_conv.rdf`. For the second use-case, the ontology building has been harmonized in order to use only one ontology (`rdf/emotion_strategy.rdf`) and one script (`finetuning_batch_individuals_emo.py`).
+This subfolders contains the ontologies and (normally, when enough space) the auxiliary models to evaluate the descriptor values on the textual content and incorporate this information in the ontology. Each utterance will be therefore seen as an ontology individual. For that, we use the `owlready2` python library that allows to create an ontology and call reasoners to perform inference on it. This part of the code is crucial as it allows to retrieve the inferred concepts that will then be used to annotate fine-tuning data, to evaluate generated content and to guide the implementation of conversational strategies. Regarding the Proficiency-Level Control use-case, there are two ontologies: `rdf/utterances_cefr.rdf` only for the one-shot generation evaluation and `rdf/controllable_conversation.rdf` for the conversation strategy. The first one is processed in `code/finetuning_batch_individuals_cefr.py` and the second one in `code/finetuning_individuals_cefr_conv.rdf`. For the second use case, the ontology building has been harmonized in order to use only one ontology (`rdf/emotion_strategy.rdf`) and one script (`finetuning_batch_individuals_emo.py`).
 
 ### `fine-tuning` 
 
@@ -64,7 +64,7 @@ We provide a PDF file that contains additional information mostly regarding the 
 <a name="quickstart"></a>
 ## Setup Guide
 
-Start be setting up all the required models and python modules to run the code:
+Start by setting up all the required models and python modules to run the code:
 ```bash
 cd conv_strategies_onto
 python3 -m venv conv_strategies
@@ -75,7 +75,7 @@ pip3 install -r requirements.txt
 python3 -m spacy download en_core_web_sm
 ```
 
-The following subsections give examples of how to run the code for fine-tuning and evaluation, providing we have all the necessary data and auxiliary models aleardy fitted.
+The following subsections give examples of how to run the code for fine-tuning and evaluation, provided we have all the necessary data and auxiliary models aleardy fitted.
 
 ### Run Fine-Tuning
 
