@@ -4,11 +4,12 @@ This repository contains the software material for the paper "Conversational Con
 
 ## Table of Contents
 
-- [Content overview](#contents)
-- [Setup guide](#quickstart)
+- [Content Overview](#contents)
+- [Setup Guide](#quickstart)
+- [Cite this Work](#cite)
 
 <a name="contents"></a>
-## Content overview
+## Content Overview
 The repository is organized as follows, containing four sub-folders:
 
 ```
@@ -56,12 +57,12 @@ This subfolder contains all the scripts to fine-tune and evaluate large language
 
 In the `gen_quality_corpora` subfolder, there are all the generated contents used to compute the automated metrics and the BERT score ratio, which is achieved in the script `../code/compute_gen_scores.py`. The scores are given in two json files (for reference/reference and predictions/references scores): `./results/generation_quality_ref_ref.json` and `./results/generation_quality_results.json`.
 
-### appendices
+### Appendices
 
 We provide a PDF file that contains additional information mostly regarding the way we modeled descriptors and examples of textual contents for different proficiency levels. 
 
 <a name="quickstart"></a>
-## Setup guide
+## Setup Guide
 
 Start be setting up all the required models and python modules to run the code:
 ```bash
@@ -76,7 +77,7 @@ python3 -m spacy download en_core_web_sm
 
 The following subsections give examples of how to run the code for fine-tuning and evaluation, providing we have all the necessary data and auxiliary models aleardy fitted.
 
-### Run fine-tuning
+### Run Fine-Tuning
 
 The fine-tuning script is `fine-tuning/code/lm_training.py`. Set the model to fine-tune using a valid HuggingFace path here:
 ```python
@@ -114,7 +115,7 @@ training_args = TrainingArguments(
 )
 ```
 
-### Run evaluation
+### Run Evaluation
 
 The evaluation script is `fine-tuning/code/lm_evaluation.py`. Start by defining the model you want to evaluate and provide the corresponding checkpoint for the adapters, depending also on the task you want to evaluate:
 ```python
@@ -137,5 +138,26 @@ In conversation, this will start a conversation following the Emotion Profile Co
 ```python
 evaluate_conv(args, f'emotion_conv_test', ontology_concept="NextIntention")
 ```
+<a name="cite"></a>
+## Citation
 
-
+```bibtex
+@inproceedings{gendron-etal-2026-conversational,
+    title = "Conversational Control with Ontologies for Large Language Models: A Lightweight Framework for Constrained Generation",
+    author = "Gendron, Barbara  and
+      Guibon, Gael  and
+      d{'}Aquin, Mathieu",
+    editor = "S{\'e}rasset, Gilles  and
+      Gkirtzou, Katerina  and
+      Cochez, Michael  and
+      Kalo, Jan-Christoph",
+    booktitle = "Proceedings of the Knowledge Graphs and Large Language Models Workshop ({KG}-{LLM}) @ {LREC}26",
+    month = may,
+    year = "2026",
+    address = "Palma, Mallorca (Spain)",
+    publisher = "ELRA Language Resources Association (ELRA)",
+    url = "https://aclanthology.org/2026.kallm-1.3/",
+    doi = "10.63317/446x4ysrhfeq",
+    pages = "20--35"
+}
+```
